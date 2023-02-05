@@ -37,7 +37,6 @@ import warnings
 import matplotlib.pyplot as plt
 import datetime
 import matplotlib.dates as md
-from google.colab import auth
 from statsmodels.tsa.arima.model import ARIMA
 from sklearn.datasets import load_diabetes
 from sklearn.model_selection import train_test_split
@@ -47,10 +46,8 @@ warnings.filterwarnings("ignore")
 
 """Leitura de dados:"""
 
-from google.colab import drive
-drive.mount('/content/drive')
 
-dados = pd.read_excel('/content/drive/MyDrive/Dados.xlsx',header=0,index_col=0).sort_index()
+dados = pd.read_excel('Dados.xlsx',header=0,index_col=0).sort_index()
 
 """Será criada uma função MAPE (Mean Absolute Percentage Error) que será utilizada no futuro para calcular o erro dos parametros passados para o ARIMA"""
 
@@ -64,7 +61,6 @@ Primeiramente vamos visualizar a quantidade de linhas e colunas da base de dados
 
 print("Numero de linhas:", dados.shape[0])
 print("Numero de colunas: ", dados.shape[1])
-print(dados.index)
 
 plt.figure(figsize = (15, 10))
 plt.plot(dados.index, dados.Vendas)
@@ -167,4 +163,4 @@ plt.plot(datenums,forecasting)
 plt.show()
 
 print("\n A estimativa para os proximos 5 dias são:\n")
-display(forecasting)
+print(forecasting)
